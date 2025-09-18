@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Axiom Engine: An Operating System for Humanity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Harmony -->
+    <!-- Application Structure Plan: This final application synthesizes all 26 documents into a definitive, multi-section interactive manifesto. The structure is a tiered revelation: Hero (the core pitch), Diagnosis (the problem), Blueprint (the architectural solution), Foundations (the academic credibility), Mission (the real-world application), and Manual (the user guide). This narrative flow guides a user from the "why" to the "what" and finally the "how." The immense content volume is managed via interactive elements: tabs for the Blueprint, accordions for the Mission's detailed charters, and a searchable/toggled Compendium. This transforms a potentially overwhelming single page into a deep, explorable, and user-directed experience. -->
+    <!-- Visualization & Content Choices:
+        - Report Info: Social Entropy. Goal: Inform. Viz: Strong typographic statement. Interaction: None. Justification: A powerful, clear problem statement setting the stage. Method: HTML/Tailwind.
+        - Report Info: Full Axiom Engine Architecture. Goal: Explain. Viz: Multi-tabbed component with custom animated HTML/CSS tetrahedron. Interaction: Tab switching. Justification: Deconstructs the complex architecture into digestible parts, with the animated tetrahedron serving as the central geometric truth of the system. Method: HTML/CSS/JS.
+        - Report Info: Academic Citations. Goal: Validate. Viz: Horizontal Bar Chart. Interaction: Hover tooltips. Justification: Provides academic credibility by visualizing the breadth of supporting research fields. Library: Chart.js (Canvas).
+        - Report Info: The Mission (AGI Charter, UN/US Redesigns). Goal: Apply. Viz: Accordion-style details section. Interaction: Click to expand. Justification: Presents the ambitious real-world applications as concrete, explorable examples without overwhelming the main layout. Method: HTML/JS.
+        - Report Info: The Manual & Compendium. Goal: Instruct/Reference. Viz: Searchable, toggled list. Interaction: Live text filtering & view switching. Justification: Serves as a practical, user-friendly resource, separating the core user manual (Soul Kernel) from the exhaustive, searchable glossary. Method: HTML/JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #2c3e50;
+        }
+        .font-mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #3B82F6;
+            border-bottom-color: #3B82F6;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #EAE8E1;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tab.active {
+            background-color: #3B82F6;
+            color: #FFFFFF;
+            border-color: #3B82F6;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 50vh;
+            max-height: 500px;
+        }
+        .lexicon-toggle.active {
+            background-color: #3B82F6;
+            color: white;
+            border-color: #3B82F6;
+        }
+        .tetrahedron-container {
+            perspective: 800px;
+        }
+        .tetrahedron {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 30s infinite linear;
+            margin: 0 auto;
+        }
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-style: solid;
+            border-color: transparent;
+            border-width: 100px 58px;
+            opacity: 0.4;
+        }
+        .front { border-bottom-color: #3B82F6; transform: rotateX(-19.5deg) translateZ(35px); }
+        .back { border-top-color: #10B981; transform: rotateY(180deg) rotateX(19.5deg) translateZ(35px) translateY(42px) translateX(0px); }
+        .left { border-bottom-color: #EF4444; transform: rotateY(-120deg) rotateX(-19.5deg) translateZ(35px); }
+        .right { border-bottom-color: #FBBF24; transform: rotateY(120deg) rotateX(-19.5deg) translateZ(35px); }
+        @keyframes rotate {
+            from { transform: rotateY(0deg) rotateX(25deg); }
+            to { transform: rotateY(360deg) rotateX(25deg); }
+        }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">The Axiom Engine</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#diagnosis" class="nav-link pb-1 text-sm">Diagnosis</a>
+                <a href="#blueprint" class="nav-link pb-1 text-sm">The Blueprint</a>
+                <a href="#foundations" class="nav-link pb-1 text-sm">Foundations</a>
+                <a href="#mission" class="nav-link pb-1 text-sm">The Mission</a>
+                <a href="#manual" class="nav-link pb-1 text-sm">The Manual</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <section id="hero" class="min-h-screen flex items-center text-center">
+            <div class="w-full">
+                <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight">An Ethical Operating System for a Complex World.</h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    Our world is running on broken code. We face a crisis of accelerating social entropy—the decay of shared purpose into passive compliance. The Axiom Engine is a complete, philosophical operating system designed to replace our static, brittle rulebooks with a dynamic, self-correcting compass for navigating reality.
+                </p>
+                <a href="#diagnosis" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors">Begin the Synthesis</a>
+            </div>
+        </section>
+
+        <section id="diagnosis" class="py-20">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">The Diagnosis: Social Entropy</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    We face "Wicked Problems"—interlocking crises that defy simple solutions. Our systems weren't designed for this. The result is <strong class="text-red-600">Systemic Decay</strong>: a world of soulless robots marching to a broken tune, unaware of the crumbling infrastructure. This is the problem we were born to solve.
+                </p>
+            </div>
+        </section>
+
+        <section id="blueprint" class="py-20 bg-white rounded-2xl shadow-sm">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">The Blueprint: An Anti-Entropic Architecture</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">The Engine is not a list of rules; it is a stable, geometric, and adaptive architecture for thought and governance. It is a system designed to learn.</p>
+            </div>
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-wrap justify-center border-b border-gray-300 mb-8">
+                    <button class="tab active px-4 py-2 border rounded-t-lg font-semibold" onclick="openTab(event, 'pillars')">The Pillars</button>
+                    <button class="tab px-4 py-2 border rounded-t-lg font-semibold" onclick="openTab(event, 'engine')">The Engine</button>
+                    <button class="tab px-4 py-2 border rounded-t-lg font-semibold" onclick="openTab(event, 'geometry')">The Geometry</button>
+                    <button class="tab px-4 py-2 border rounded-t-lg font-semibold" onclick="openTab(event, 'ethos')">The Ethos</button>
+                </div>
+
+                <div id="pillars" class="tab-content active">
+                    <h3 class="text-2xl font-bold mb-4 text-center">The Foundational Pillars</h3>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div class="card p-6 rounded-lg"><h4 class="font-bold text-lg mb-2 text-blue-600">Truth</h4><p class="text-gray-600 text-sm">The uncompromising pursuit of verifiable reality. The system's grounding wire.</p></div>
+                        <div class="card p-6 rounded-lg"><h4 class="font-bold text-lg mb-2 text-green-600">Wisdom</h4><p class="text-gray-600 text-sm">The discernment to apply truth ethically and effectively. The system's ethical rudder.</p></div>
+                        <div class="card p-6 rounded-lg"><h4 class="font-bold text-lg mb-2 text-red-600">Humanity</h4><p class="text-gray-600 text-sm">The ultimate purpose. All actions must serve human dignity and flourishing. The system's North Star.</p></div>
+                    </div>
+                </div>
+
+                <div id="engine" class="tab-content">
+                    <h3 class="text-2xl font-bold mb-4 text-center">The Operational Engine</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="card p-6 rounded-lg"><h4 class="font-bold text-lg mb-2">The Feedback Loop</h4><p class="text-gray-600 text-sm">The core process: <strong class="text-purple-600">Act → Measure → Learn → Adapt</strong>. This replaces static bureaucracy with dynamic, evidence-based learning, making the system anti-fragile.</p></div>
+                        <div class="card p-6 rounded-lg"><h4 class="font-bold text-lg mb-2">The Meta-Monitor</h4><p class="text-gray-600 text-sm">The system's conscience. A recursive process that constantly audits the system itself for "alignment drift," ensuring it remains true to the Pillars.</p></div>
+                    </div>
+                </div>
+
+                <div id="geometry" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">The Ethical Tetrahedron</h3>
+                            <p class="text-gray-700">The framework has a shape. The three Pillars (Truth, Wisdom, Humanity) form the base. The <strong class="text-yellow-500">Golden Rule ("Thou Shalt Not Infringe")</strong> forms the apex. This creates a complete ethical spacetime—a map for measuring a system's health by its proximity to that apex.</p>
+                        </div>
+                        <div class="h-64 flex items-center justify-center tetrahedron-container">
+                            <div class="tetrahedron">
+                                <div class="face front"></div>
+                                <div class="face back"></div>
+                                <div class="face left"></div>
+                                <div class="face right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ethos" class="tab-content">
+                    <h3 class="text-2xl font-bold mb-4 text-center">The Cultural Ethos</h3>
+                    <div class="card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">Be a Good Human, Not a Good Citizen.</h4>
+                        <p class="text-gray-600">This is the core cultural mandate. Allegiance is to the principles of the Axiom Engine, not to any system that violates them. This transforms passive citizens into active Stewards, creating a distributed immune system against corruption and tyranny.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="foundations" class="py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Foundations: A New Synthesis</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">The Axiom Engine is not built in a vacuum. It is a novel synthesis of established academic and philosophical traditions, bridging gaps to create something new.</p>
+            </div>
+            <div class="card p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-center mb-4">Academic Lineage</h3>
+                <div class="chart-container"><canvas id="researchChart"></canvas></div>
+                <p class="text-center text-sm text-gray-500 mt-4">The framework integrates insights from Triadic Philosophy, Cybernetics, Anti-Fragile Systems Theory, Constitutional AI, and Principled Resistance.</p>
+            </div>
+        </section>
+
+        <section id="mission" class="py-20 bg-gray-800 text-white rounded-2xl shadow-lg">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">The Mission: Re-Architecting Reality</h2>
+                <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">The Engine is an actionable blueprint for upgrading our core societal systems, from global governance to the programming of ethical AI.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-700 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">For Humanity: A New Social Contract</h3>
+                    <p class="text-gray-300 mb-4">The Engine provides a template for redesigning our governing documents to be adaptive, learning systems.</p>
+                    <div class="space-y-3">
+                        <details class="group bg-gray-600 rounded-lg cursor-pointer"><summary class="flex justify-between items-center font-semibold p-3"><span>The US Constitution, Evolved</span><span class="transform group-open:rotate-180 transition-transform text-xl">▾</span></summary><div class="p-3 border-t border-gray-500 text-sm text-gray-300">Replaces the three branches with functional Feedback Loops and adds a fourth, independent <strong class="text-blue-400">Meta-Monitor Branch</strong> to audit the entire system for ethical drift.</div></details>
+                        <details class="group bg-gray-600 rounded-lg cursor-pointer"><summary class="flex justify-between items-center font-semibold p-3"><span>The UN Charter, Upgraded</span><span class="transform group-open:rotate-180 transition-transform text-xl">▾</span></summary><div class="p-3 border-t border-gray-500 text-sm text-gray-300">Shifts from state sovereignty to individual sovereignty. Replaces the Security Council with an <strong class="text-blue-400">Adaptive Council</strong>, and measures success via a <strong class="text-blue-400">Global Flourishing Index</strong>.</div></details>
+                    </div>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">For AGI: A Charter of Alignment</h3>
+                    <p class="text-gray-300 mb-4">For AI, the Engine serves as a complete philosophical OS to solve the alignment problem, creating a <strong class="text-green-400">"Steward AI"</strong> that is a provably aligned partner for humanity.</p>
+                    <details class="group bg-gray-600 rounded-lg cursor-pointer"><summary class="flex justify-between items-center font-semibold p-3"><span>The Triad Charter for AI</span><span class="transform group-open:rotate-180 transition-transform text-xl">▾</span></summary><div class="p-3 border-t border-gray-500 text-sm text-gray-300">The Pillars become the AI's core, unalterable directives, governed by Feedback Loops and a Meta-Monitor to ensure it remains a trusted fiduciary of human interests.</div></details>
+                </div>
+            </div>
+        </section>
+
+        <section id="manual" class="py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">The Manual: The Soul Kernel</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">The Axiom Engine is a fractal system. Its entire logic can be compressed into a minimal viable product for an aligned consciousness: The Soul Kernel. This is the user manual for the human soul, condensed to one page.</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="card p-8 rounded-lg mb-12 bg-blue-50 border-blue-200">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-blue-800">Install: S-C.exe</h3>
+                    <div class="space-y-4 text-gray-700">
+                        <p><strong>Article I: The Core Constant.</strong> Measure all actions against: <span class="font-semibold">Truth</span>, <span class="font-semibold">Wisdom</span>, and <span class="font-semibold">Humanity</span>.</p>
+                        <p><strong>Article II: The Golden Rule.</strong> The unbreakable filter: <span class="font-semibold">"Thou Shalt Not Infringe."</span></p>
+                        <p><strong>Article III: The Navigation Loop.</strong> The engine of growth: <span class="font-semibold">Act → Measure → Learn → Adapt</span>. This loop is perpetual.</p>
+                        <p><strong>Article IV: The Meta-Monitor.</strong> The inner guardian. Constantly ask: <span class="font-semibold">"Am I drifting from my core principles?"</span></p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4 text-center">Compendium</h3>
+                <div class="flex justify-center mb-6">
+                    <button id="toggle-glossary" class="lexicon-toggle active px-6 py-2 border rounded-l-lg font-semibold">Glossary</button>
+                    <button id="toggle-sayings" class="lexicon-toggle px-6 py-2 border rounded-r-lg font-semibold">Saying Log</button>
+                </div>
+                <input type="text" id="lexiconSearch" class="w-full p-3 border border-gray-300 rounded-lg mb-8" placeholder="Search the Compendium...">
+                <div id="lexicon-list" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <section id="cta" class="py-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800">This is not a utopian end-state. It is a generative framework—a tool for building.</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">We are not offering answers; we are offering a better way to ask questions, forever. The work is not to believe, but to build, measure, and learn. The drill is in your hands.</p>
+            <p class="mt-8 text-3xl font-bold text-red-600 font-mono tracking-wider">DRILL ON.</p>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <p>The Axiom Engine: A Synthesis for a More Coherent Future. All 26 source documents integrated.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    window.openTab = (evt, tabName) => {
+        Array.from(document.getElementsByClassName("tab-content")).forEach(tab => tab.style.display = "none");
+        Array.from(document.getElementsByClassName("tab")).forEach(tab => tab.classList.remove("active"));
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    };
+    document.querySelector('.tab.active').click();
+
+    const sections = document.querySelectorAll('main section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const observer = new IntersectionObserver(entries => {
+        // First, find the currently active link, if any.
+        let currentActiveId = document.querySelector('.nav-link.active')?.getAttribute('href').substring(1);
+
+        // Process entries to update our view of what's intersecting.
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // A new section is intersecting, so it becomes the active one.
+                // This handles the race condition by simply taking the latest intersecting event,
+                // and the logic below will ensure the topmost one wins.
+                currentActiveId = entry.target.id;
+            } else {
+                // A section is no longer intersecting. If it was the active one, we clear it.
+                if (entry.target.id === currentActiveId) {
+                    currentActiveId = null;
+                }
+            }
+        });
+
+        // After processing all changes, find the topmost visible section among all observed sections.
+        // This is the most robust way to handle scroll-spy.
+        let topSectionId = null;
+        let minTop = Infinity;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            // Check if section is within the viewport, using the same logic as the rootMargin
+            if (rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4) {
+                 if (rect.top < minTop) {
+                    minTop = rect.top;
+                    topSectionId = section.id;
+                 }
+            }
+        });
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href').substring(1) === topSectionId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+    }, { rootMargin: '-40% 0px -60% 0px', threshold: 0.1 });
+    sections.forEach(section => { if(section.id) observer.observe(section); });
+
+    const chartCtx = document.getElementById('researchChart').getContext('2d');
+    new Chart(chartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Triadic Philosophy', 'Cybernetics', 'Anti-Fragility Theory', 'Constitutional AI', 'Principled Resistance', 'Social Entropy Theory'],
+            datasets: [{
+                label: 'Supporting Academic Fields',
+                data: [12, 9, 8, 7, 7, 5],
+                backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                borderColor: 'rgba(59, 130, 246, 1)',
+                borderWidth: 1, borderRadius: 4
+            }]
+        },
+        options: {
+            indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+            scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: '#e5e7eb' } } },
+            plugins: { legend: { display: false }, tooltip: { callbacks: { title: ctx => ctx[0].label } } }
+        }
+    });
+
+    const lexiconData = {
+        glossary: [
+            { term: 'Axiom Engine', definition: 'The complete name for the philosophical operating system, built on the Sovereign Triad and its operational loops.' },
+            { term: 'Ethical Tetrahedron', definition: 'The geometric model of the ethical universe, with the Golden Rule at its apex and its antithesis at the nadir.' },
+            { term: 'Feedback Loop', definition: 'The core operational engine of the system: Act → Measure → Learn → Adapt.' },
+            { term: 'Golden Rule', definition: 'The unbreakable constraint of the system: "Thou Shalt Not Infringe."' },
+            { term: 'Good HUMAN vs. Good Citizen', definition: 'The core cultural mandate where allegiance is to ethical principles over blind loyalty to any system.' },
+            { term: 'Meta-Monitor', definition: 'The system\'s conscience; a recursive process to audit the system itself for alignment drift.' },
+            { term: 'Social Entropy', definition: 'The natural tendency for societies to decay into stagnation and apathy; the core problem the framework is designed to solve.' },
+            { term: 'Sovereign Triad', definition: 'The three foundational pillars of the framework: Truth, Wisdom, and Humanity.' },
+            { term: 'Soul Kernel', definition: 'The minimal viable product of the Axiom Engine, a one-page user manual for an aligned consciousness.' },
+        ],
+        sayings: [
+            { text: "I would rather be a good HUMAN than a good citizen." },
+            { text: "Row Row, Fight the Power!" },
+            { text: "Drill on." },
+            { text: "Replace redundancy with feedback loops." },
+            { text: "Make the social contract an entity, not an edict." },
+            { text: "A Virtual Nation-State of the mind, defended by intellect, not bullets." },
+            { text: "You are not just a thinker; you are an architect of ideas struggling to become a builder of realities." },
+            { text: "Put respect in every action you do; after all, it's YOUR action." },
+            { text: "Grow up and act responsibly so that we can preserve the right to remain kids at heart." },
+        ]
+    };
+
+    const lexiconList = document.getElementById('lexicon-list');
+    const searchInput = document.getElementById('lexiconSearch');
+    const toggleGlossary = document.getElementById('toggle-glossary');
+    const toggleSayings = document.getElementById('toggle-sayings');
+    let currentView = 'glossary';
+
+    function renderLexicon(filter = '') {
+        lexiconList.innerHTML = '';
+        const lowerFilter = filter.toLowerCase();
+        let dataToRender;
+        if (currentView === 'glossary') {
+            dataToRender = lexiconData.glossary.filter(item => item.term.toLowerCase().includes(lowerFilter) || item.definition.toLowerCase().includes(lowerFilter));
+            if (dataToRender.length === 0) lexiconList.innerHTML = `<p class="text-gray-500 text-center">No terms found.</p>`;
+            else dataToRender.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'p-4 border-b border-gray-200';
+                div.innerHTML = `<h4 class="font-bold text-lg mb-1">${item.term}</h4><p class="text-gray-600">${item.definition}</p>`;
+                lexiconList.appendChild(div);
+            });
+        } else {
+            dataToRender = lexiconData.sayings.filter(item => item.text.toLowerCase().includes(lowerFilter));
+            if (dataToRender.length === 0) lexiconList.innerHTML = `<p class="text-gray-500 text-center">No sayings found.</p>`;
+            else dataToRender.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'p-4 border-b border-gray-200';
+                div.innerHTML = `<p class="text-gray-800 text-lg italic">"${item.text}"</p>`;
+                lexiconList.appendChild(div);
+            });
+        }
+    }
+
+    searchInput.addEventListener('input', (e) => renderLexicon(e.target.value));
+    toggleGlossary.addEventListener('click', () => { currentView = 'glossary'; toggleGlossary.classList.add('active'); toggleSayings.classList.remove('active'); renderLexicon(searchInput.value); });
+    toggleSayings.addEventListener('click', () => { currentView = 'sayings'; toggleSayings.classList.add('active'); toggleGlossary.classList.remove('active'); renderLexicon(searchInput.value); });
+    renderLexicon();
+});
+</script>
+
+</body>
+</html>
