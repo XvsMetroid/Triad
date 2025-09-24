@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Triad Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sovereign Triad Interactive Simulator</h1>
+    <div id="simulator-container">
+        <div id="fractal-architecture" class="component">
+            <h2>Fractal Architecture</h2>
+            <canvas id="fractal-canvas" width="400" height="300"></canvas>
+            <div>
+                <label for="fractal-level">Scale:</label>
+                <select id="fractal-level">
+                    <option value="individual">Individual</option>
+                    <option value="organizational">Organizational</option>
+                    <option value="societal">Societal</option>
+                    <option value="global">Global</option>
+                </select>
+            </div>
+        </div>
+        <div id="feedback-loop" class="component">
+            <h2>Feedback Loop</h2>
+            <div id="feedback-stages">
+                <div class="stage" id="act">Act</div>
+                <div class="stage" id="measure">Measure</div>
+                <div class="stage" id="learn">Learn</div>
+                <div class="stage" id="adapt">Adapt</div>
+            </div>
+        </div>
+        <div id="policy-simulation" class="component">
+            <h2>Policy Simulation</h2>
+            <textarea id="policy-editor" placeholder="Enter a policy scenario..."></textarea>
+            <button id="run-simulation">Run Simulation</button>
+        </div>
+        <div id="alignment-scores" class="component">
+            <h2>Triad Alignment Scores</h2>
+            <div id="scores-container">
+                <p>Truth: <span id="truth-score">--</span></p>
+                <p>Wisdom: <span id="wisdom-score">--</span></p>
+                <p>Humanity: <span id="humanity-score">--</span></p>
+            </div>
+        </div>
+        <div id="meta-monitor" class="component">
+            <h2>Meta-Monitor Dashboard</h2>
+            <p>System Status: <span id="system-status">Nominal</span></p>
+            <p>Alignment Drift: <span id="alignment-drift">0%</span></p>
+        </div>
+        <div id="context-examples" class="component">
+            <h2>Contextual Examples from the Corpus</h2>
+            <div id="examples-container"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
