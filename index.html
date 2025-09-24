@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Triad Interactive Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1 class="logo">
+                    <i class="fas fa-triangle"></i>
+                    Sovereign Triad Simulator
+                </h1>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="overview">Overview</button>
+                    <button class="nav-btn" data-section="fractal">Fractal Architecture</button>
+                    <button class="nav-btn" data-section="feedback">Feedback Loop</button>
+                    <button class="nav-btn" data-section="scenarios">Scenarios</button>
+                    <button class="nav-btn" data-section="monitor">Meta-Monitor</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <div class="container">
+                    <div class="hero">
+                        <h2>A Philosophical Operating System for Ethical Governance</h2>
+                        <p class="hero-description">
+                            Explore the Sovereign Triad framework through interactive visualizations and simulations.
+                            Understand how Truth, Wisdom, and Humanity work together to create adaptive, ethical governance systems.
+                        </p>
+                    </div>
+
+                    <div class="principles-grid">
+                        <div class="principle-card truth">
+                            <div class="principle-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>Truth</h3>
+                            <p>Empirical accuracy and transparent reality assessment</p>
+                            <div class="principle-score">
+                                <div class="score-bar">
+                                    <div class="score-fill" data-principle="truth" style="width: 85%"></div>
+                                </div>
+                                <span class="score-text">85%</span>
+                            </div>
+                        </div>
+
+                        <div class="principle-card wisdom">
+                            <div class="principle-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Wisdom</h3>
+                            <p>Ethical judgment and long-term strategic thinking</p>
+                            <div class="principle-score">
+                                <div class="score-bar">
+                                    <div class="score-fill" data-principle="wisdom" style="width: 72%"></div>
+                                </div>
+                                <span class="score-text">72%</span>
+                            </div>
+                        </div>
+
+                        <div class="principle-card humanity">
+                            <div class="principle-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Humanity</h3>
+                            <p>Fundamental human dignity and flourishing</p>
+                            <div class="principle-score">
+                                <div class="score-bar">
+                                    <div class="score-fill" data-principle="humanity" style="width: 90%"></div>
+                                </div>
+                                <span class="score-text">90%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overall-alignment">
+                        <h3>Overall Triad Alignment</h3>
+                        <div class="alignment-gauge">
+                            <div class="gauge-arc">
+                                <div class="gauge-fill" style="transform: rotate(136deg)"></div>
+                                <div class="gauge-center">
+                                    <span class="gauge-score">82%</span>
+                                    <span class="gauge-label">Aligned</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fractal Architecture Section -->
+            <section id="fractal" class="section">
+                <div class="container">
+                    <h2>Fractal Architecture</h2>
+                    <p class="section-description">
+                        The Sovereign Triad operates on self-similar patterns that scale across all levels of organization.
+                        Click on each level to explore how the three principles manifest at different scales.
+                    </p>
+
+                    <div class="fractal-visualization">
+                        <div class="fractal-level" data-level="individual">
+                            <div class="level-circle individual-level">
+                                <i class="fas fa-user"></i>
+                                <span>Individual</span>
+                            </div>
+                            <div class="level-details">
+                                <h4>Individual Level</h4>
+                                <div class="level-principles">
+                                    <div class="level-principle">
+                                        <strong>Truth:</strong> Personal honesty and intellectual curiosity
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Wisdom:</strong> Ethical judgment in daily decisions
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Humanity:</strong> Individual flourishing and positive impact
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fractal-level" data-level="organizational">
+                            <div class="level-circle organizational-level">
+                                <i class="fas fa-building"></i>
+                                <span>Organizational</span>
+                            </div>
+                            <div class="level-details">
+                                <h4>Organizational Level</h4>
+                                <div class="level-principles">
+                                    <div class="level-principle">
+                                        <strong>Truth:</strong> Radical transparency and data-driven decisions
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Wisdom:</strong> Strategic foresight and ethical policies
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Humanity:</strong> Employee wellbeing and stakeholder value
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fractal-level" data-level="societal">
+                            <div class="level-circle societal-level">
+                                <i class="fas fa-city"></i>
+                                <span>Societal</span>
+                            </div>
+                            <div class="level-details">
+                                <h4>Societal Level</h4>
+                                <div class="level-principles">
+                                    <div class="level-principle">
+                                        <strong>Truth:</strong> Free press and scientific institutions
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Wisdom:</strong> Democratic deliberation and long-term planning
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Humanity:</strong> Social safety nets and human rights
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fractal-level" data-level="global">
+                            <div class="level-circle global-level">
+                                <i class="fas fa-globe"></i>
+                                <span>Global</span>
+                            </div>
+                            <div class="level-details">
+                                <h4>Global Level</h4>
+                                <div class="level-principles">
+                                    <div class="level-principle">
+                                        <strong>Truth:</strong> International transparency standards
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Wisdom:</strong> Diplomatic cooperation and shared learning
+                                    </div>
+                                    <div class="level-principle">
+                                        <strong>Humanity:</strong> Universal human rights and development
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feedback Loop Section -->
+            <section id="feedback" class="section">
+                <div class="container">
+                    <h2>Feedback Loop Simulator</h2>
+                    <p class="section-description">
+                        Experience the four-stage process that enables systemic learning and adaptation.
+                        Run through the cycle to see how policies evolve through evidence-based iteration.
+                    </p>
+
+                    <div class="feedback-loop">
+                        <div class="feedback-stage active" data-stage="act">
+                            <div class="stage-circle">
+                                <i class="fas fa-play"></i>
+                                <span class="stage-number">1</span>
+                            </div>
+                            <h3>Act</h3>
+                            <p>Implementation of policies based on current understanding</p>
+                            <div class="stage-content">
+                                <textarea id="act-input" placeholder="Describe your policy implementation...">Implement universal basic income pilot program for 1000 citizens in rural district</textarea>
+                                <button class="stage-btn" onclick="nextStage('measure')">Execute Policy</button>
+                            </div>
+                        </div>
+
+                        <div class="feedback-stage" data-stage="measure">
+                            <div class="stage-circle">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="stage-number">2</span>
+                            </div>
+                            <h3>Measure</h3>
+                            <p>Collection of empirical data on outcomes and impacts</p>
+                            <div class="stage-content">
+                                <div class="metrics-grid" id="metrics-display">
+                                    <!-- Metrics will be generated dynamically -->
+                                </div>
+                                <button class="stage-btn" onclick="nextStage('learn')">Analyze Data</button>
+                            </div>
+                        </div>
+
+                        <div class="feedback-stage" data-stage="learn">
+                            <div class="stage-circle">
+                                <i class="fas fa-lightbulb"></i>
+                                <span class="stage-number">3</span>
+                            </div>
+                            <h3>Learn</h3>
+                            <p>Analysis of data to identify patterns, successes, and failures</p>
+                            <div class="stage-content">
+                                <div class="insights-list" id="insights-display">
+                                    <!-- Insights will be generated dynamically -->
+                                </div>
+                                <button class="stage-btn" onclick="nextStage('adapt')">Generate Insights</button>
+                            </div>
+                        </div>
+
+                        <div class="feedback-stage" data-stage="adapt">
+                            <div class="stage-circle">
+                                <i class="fas fa-sync"></i>
+                                <span class="stage-number">4</span>
+                            </div>
+                            <h3>Adapt</h3>
+                            <p>Modification of approaches based on learning</p>
+                            <div class="stage-content">
+                                <textarea id="adapt-input" placeholder="How will you modify your approach?"></textarea>
+                                <button class="stage-btn" onclick="restartLoop()">Implement Changes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="loop-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="loop-progress"></div>
+                        </div>
+                        <div class="loop-counter">
+                            Iteration: <span id="iteration-count">1</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scenarios Section -->
+            <section id="scenarios" class="section">
+                <div class="container">
+                    <h2>Governance Scenarios</h2>
+                    <p class="section-description">
+                        Apply Triad principles to real governance challenges. Edit policies and see how they align with Truth, Wisdom, and Humanity.
+                    </p>
+
+                    <div class="scenario-selector">
+                        <button class="scenario-btn active" data-scenario="climate">Climate Crisis</button>
+                        <button class="scenario-btn" data-scenario="inequality">Economic Inequality</button>
+                        <button class="scenario-btn" data-scenario="ai">AI Governance</button>
+                        <button class="scenario-btn" data-scenario="healthcare">Healthcare Reform</button>
+                    </div>
+
+                    <div class="scenario-workspace">
+                        <div class="scenario-description" id="scenario-description">
+                            <!-- Scenario description will be loaded dynamically -->
+                        </div>
+
+                        <div class="policy-editor">
+                            <h3>Policy Proposal</h3>
+                            <textarea id="policy-text" placeholder="Enter your policy proposal here..."></textarea>
+                            <button class="analyze-btn" onclick="analyzePolicy()">Analyze Policy</button>
+                        </div>
+
+                        <div class="alignment-results" id="alignment-results">
+                            <!-- Alignment analysis will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meta-Monitor Dashboard Section -->
+            <section id="monitor" class="section">
+                <div class="container">
+                    <h2>Meta-Monitor Dashboard</h2>
+                    <p class="section-description">
+                        The second-order oversight mechanism that audits the entire system for alignment with core principles.
+                        Monitor system health and identify potential drift or corruption.
+                    </p>
+
+                    <div class="monitor-grid">
+                        <div class="monitor-card">
+                            <h3>System Integrity</h3>
+                            <div class="integrity-indicators">
+                                <div class="indicator">
+                                    <span class="indicator-label">Transparency Score</span>
+                                    <div class="indicator-bar">
+                                        <div class="indicator-fill" style="width: 88%"></div>
+                                    </div>
+                                    <span class="indicator-value">88%</span>
+                                </div>
+                                <div class="indicator">
+                                    <span class="indicator-label">Corruption Risk</span>
+                                    <div class="indicator-bar risk">
+                                        <div class="indicator-fill" style="width: 15%"></div>
+                                    </div>
+                                    <span class="indicator-value">Low</span>
+                                </div>
+                                <div class="indicator">
+                                    <span class="indicator-label">Adaptation Rate</span>
+                                    <div class="indicator-bar">
+                                        <div class="indicator-fill" style="width: 92%"></div>
+                                    </div>
+                                    <span class="indicator-value">92%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="monitor-card">
+                            <h3>Principle Drift Detection</h3>
+                            <div class="drift-chart" id="drift-chart">
+                                <!-- Chart will be rendered here -->
+                            </div>
+                            <div class="drift-alerts">
+                                <div class="alert-item low">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Minor Truth deviation detected in economic reporting</span>
+                                </div>
+                                <div class="alert-item medium">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>Wisdom metric declining in long-term planning decisions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="monitor-card">
+                            <h3>Feedback Loop Health</h3>
+                            <div class="loop-health">
+                                <div class="health-metric">
+                                    <span class="metric-label">Act Phase</span>
+                                    <div class="health-indicator healthy"></div>
+                                    <span class="metric-status">Healthy</span>
+                                </div>
+                                <div class="health-metric">
+                                    <span class="metric-label">Measure Phase</span>
+                                    <div class="health-indicator healthy"></div>
+                                    <span class="metric-status">Healthy</span>
+                                </div>
+                                <div class="health-metric">
+                                    <span class="metric-label">Learn Phase</span>
+                                    <div class="health-indicator warning"></div>
+                                    <span class="metric-status">Needs Attention</span>
+                                </div>
+                                <div class="health-metric">
+                                    <span class="metric-label">Adapt Phase</span>
+                                    <div class="health-indicator healthy"></div>
+                                    <span class="metric-status">Healthy</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="monitor-card">
+                            <h3>Audit Schedule</h3>
+                            <div class="audit-timeline">
+                                <div class="audit-item completed">
+                                    <div class="audit-date">Dec 15</div>
+                                    <div class="audit-desc">Quarterly Transparency Audit</div>
+                                    <div class="audit-status">✓ Completed</div>
+                                </div>
+                                <div class="audit-item upcoming">
+                                    <div class="audit-date">Jan 8</div>
+                                    <div class="audit-desc">Ethics Committee Review</div>
+                                    <div class="audit-status">Scheduled</div>
+                                </div>
+                                <div class="audit-item upcoming">
+                                    <div class="audit-date">Jan 22</div>
+                                    <div class="audit-desc">Policy Impact Assessment</div>
+                                    <div class="audit-status">Scheduled</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Sovereign Triad Framework. A philosophical operating system for ethical governance.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
